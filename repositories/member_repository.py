@@ -35,14 +35,14 @@ def select(id):
         member = Member(result['first_name'], result['last_name'], result['id'] )
     return member
 
-def gym_classes(member):
+def gym_classes(member_id):
     gym_classes = []
     sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN bookings ON bookings.gym_class_id = gym_classes.id WHERE member_id = %s"
-    values = [member.id]
+    values = [member_id]
     results = run_sql(sql, values)
 
     for row in results:
-        gym_class = GymClass(row['id'], row['name'])
+        gym_class = GymClass(row['name'], row['id'])
         gym_classes.append(gym_class)
     return gym_classes
 
