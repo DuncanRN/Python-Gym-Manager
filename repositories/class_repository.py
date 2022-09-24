@@ -46,7 +46,6 @@ def members(class):
         members.append(member)
     return members
 
-
 def delete_all():
     sql = "DELETE FROM classes"
     run_sql(sql)
