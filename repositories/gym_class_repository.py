@@ -13,12 +13,23 @@ def select_all():
     gym_classes = []
 
     sql = "SELECT * FROM gym_classes"
-    results = (sql)
+    results = run_sql(sql)
 
     for row in results:
-        gym_class = GymClass(row['name'], row['id']  )
+        gym_class = GymClass(row['name'], row['id'])
         gym_classes.append(gym_class)
     return gym_classes
+
+# def select_all():
+#     gym_classes = []
+
+#     sql = "SELECT * FROM gym_classes"
+#     results = (sql)
+
+#     for row in results:
+#         gym_class = GymClass(row['name'], row['id'] )
+#         gym_classes.append(gym_class)
+#     return gym_classes
 
 
 
