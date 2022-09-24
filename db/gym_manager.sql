@@ -21,4 +21,3 @@ CREATE TABLE bookings (
     class_id INT REFERENCES classes(id) ON DELETE CASCADE,
     id SERIAL PRIMARY KEY
 )
-
