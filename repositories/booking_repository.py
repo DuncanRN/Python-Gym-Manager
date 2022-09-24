@@ -9,7 +9,6 @@ def save(booking):
     booking.id = results[0]['id']
     return booking
 
-
 def select_all():
     bookings = []
 
@@ -20,7 +19,6 @@ def select_all():
         booking = Booking(row['member_id'], row['gym_class_id'], row['id'])
         bookings.append(booking)
     return bookings
-
 
 def delete_all():
     sql = "DELETE FROM bookings"
