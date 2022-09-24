@@ -46,10 +46,7 @@ def gym_classes(member):
         gym_classes.append(gym_class)
     return gym_classes
 
-
-
 def delete_all():
     sql = "DELETE FROM members"
     run_sql(sql)
-
 
