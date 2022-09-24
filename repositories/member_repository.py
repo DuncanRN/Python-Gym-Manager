@@ -3,7 +3,7 @@
 from db.run_sql import run_sql
 # from models.booking import Booking
 from models.member import Member
-from models.class import Class
+from models.gym_class import GymClass
 # the colours aren't right there, but I think that is ok...?
 
 def save(member):
@@ -35,16 +35,16 @@ def select(id):
         member = Member(result['first_name'], result['last_name'], result['id'] )
     return member
 
-def classes(member):
-    classes = []
-    sql = "SELECT classes.* FROM classes INNER JOIN bookings ON bookings.class_id = classes.id WHERE member_id = %s"
+def gym_classes(member):
+    gym_classes = []
+    sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN bookings ON bookings.gym_class_id = gym_classes.id WHERE member_id = %s"
     values = [member.id]
     results = run_sql(sql, values)
 
     for row in results:
-        class = Class(row['id'], row['name'])
-        classes.append(class)
-    return classes
+        gym_class = GymClass(row['id'], row['name'])
+        gym_classes.append(gym_class)
+    return gym_classes
 
 
 
