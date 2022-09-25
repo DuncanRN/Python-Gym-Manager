@@ -3,8 +3,6 @@ from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.booking import Booking
 import repositories.booking_repository as booking_repository
-# import repositories.gym_class_repository as gym_class_repository
-# import repositories.member_repository as member_repository
 
 bookings_blueprint = Blueprint("booking", __name__)
 
@@ -22,9 +20,7 @@ def create_booking():
 # DELETE (acutally GET) '/bookings/13/16/delete'
 @bookings_blueprint.route("/bookings/<gym_class_id>/<member_id>/delete", methods=['GET'])
 def delete_booking(gym_class_id, member_id):
-    # get the booking from the member_id and gym_class_id 
     booking = booking_repository.select(gym_class_id, member_id)
-    # booking = Booking(member_id, gym_class_id)
     booking_repository.delete(booking.id)
     
     return redirect('/classes/'+gym_class_id)

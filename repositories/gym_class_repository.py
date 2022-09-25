@@ -20,18 +20,6 @@ def select_all():
         gym_classes.append(gym_class)
     return gym_classes
 
-# def select_all():
-#     gym_classes = []
-
-#     sql = "SELECT * FROM gym_classes"
-#     results = (sql)
-
-#     for row in results:
-#         gym_class = GymClass(row['name'], row['id'] )
-#         gym_classes.append(gym_class)
-#     return gym_classes
-
-
 
 def select(id):
     gym_class = None
@@ -48,14 +36,9 @@ def select(id):
 # are we using this next method?
 def members(gym_class_id):
     members = []
-    # sql = "SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE gym_class_id = %s;"
-    #  this doesn't work
-    # sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN bookings ON bookings.gym_class_id = gym_classes.id WHERE member_id = %s"
-    # this works in the other one, so swap it 
     
     sql = "SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE gym_class_id = %s"
     
-
     values = [gym_class_id]
     results = run_sql(sql, values)
 
