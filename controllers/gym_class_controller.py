@@ -9,7 +9,6 @@ gym_classes_blueprint = Blueprint("gym_class", __name__)
 
 @gym_classes_blueprint.route("/classes")
 def gym_classes():
-    print("HERE")
     gym_classes = gym_class_repository.select_all() 
     return render_template("classes/index.html", gym_classes = gym_classes)
 

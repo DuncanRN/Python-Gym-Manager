@@ -20,6 +20,20 @@ def select_all():
         bookings.append(booking)
     return bookings
 
+
+def select(gym_class_id, member_id):
+    # HERE CHANGE ALL THIS
+    booking = None
+    sql = "SELECT * FROM bookings WHERE gym_class_id = %s AND member_id=%s"
+    values = [gym_class_id, member_id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        booking = Booking(result['member_id'],result['gym_class_id'],result['id'])
+    return booking
+
+
 def delete_all():
     sql = "DELETE FROM bookings"
     run_sql(sql)
