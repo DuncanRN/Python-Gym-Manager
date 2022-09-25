@@ -20,7 +20,6 @@ def show(id):
 def new_member():
     return render_template("members/add.html")
 
-
 # CREATE
 # POST '/members'
 @members_blueprint.route("/members",  methods=['POST'])
@@ -31,3 +30,21 @@ def create_member():
     member = Member(first_name, last_name)
     member_repository.save(member)
     return redirect('/members')
+
+@members_blueprint.route("/members/<id>/edit")
+def edit_member(id):
+    member = member_repository.select(id)
+    return render_template("members/edit.html", member=member)
+
+
+# UPDATE
+# PUT (although really POST) /members/{{member.id}}/edit
+
+@members_blueprint.route("/members/<id>/edit", methods=['POST'])
+def update_member(id):
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+
+    member_to_update = Member(first_name, last_name, id)
+    member_repository.update(member_to_update)
+    return redirect ('/members/' + id)

@@ -1,3 +1,4 @@
+# import pdb
 # from collections import UserString
 # from msilib.schema import Class
 from db.run_sql import run_sql
@@ -12,6 +13,12 @@ def save(member):
     results = run_sql( sql, values )
     member.id = results[0]['id']
     return member
+
+def update(member):
+    # pdb.set_trace()
+    sql = "UPDATE members SET (first_name, last_name) = (%s, %s) WHERE id = %s"
+    values = [member.first_name, member.last_name, member.id]
+    run_sql(sql, values)
 
 def select_all():
     members = []
