@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Gym Class: {{gym_class.name}}</h1>
+
+<div>
+    <form action="/bookings" method="post">
+        <label for="member">Book into this class:</label>
+        <select name="member_id" id="member">
+            {% for member in all_members %}
+                <option value="{{ member.id }}">{{ member.first_name }} {{ member.last_name }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="hidden" name="gym_class_id" value="{{ gym_class.id }}">
+
+        <input class="button-action" type='submit' value="Book">
+    </form>
+</div>
+
+
+<div>
+<h3>Attending:</h3>
+<ul>
+    {% for member in members %}
+        <li>
+            {{member.first_name}}  {{member.last_name}}
+        </li>
+    {% endfor %}
+
+</ul>
+</div>
+
+{% endblock %}
