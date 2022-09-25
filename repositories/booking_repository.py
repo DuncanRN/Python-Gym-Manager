@@ -9,6 +9,8 @@ def save(booking):
     booking.id = results[0]['id']
     return booking
 
+
+# not convinced that we are using this method
 def select_all():
     bookings = []
 
@@ -22,7 +24,6 @@ def select_all():
 
 
 def select(gym_class_id, member_id):
-    # HERE CHANGE ALL THIS
     booking = None
     sql = "SELECT * FROM bookings WHERE gym_class_id = %s AND member_id=%s"
     values = [gym_class_id, member_id]
