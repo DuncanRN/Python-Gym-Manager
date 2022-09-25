@@ -5,8 +5,21 @@
 
 <form action="/classes" method="post">
     <label for="class">Name:</label>
-    <input name="name" id="user">
+    <input name="name" id="name">
     
+    <label for="class">Date Start:</label>
+    <input type="datetime-local"  name="date_start" id="date_start">
+
+    <label for="class">Repeating:</label>
+    <select name="repeating" id="repeating">
+        <option value="None">No Repeats</option>
+        <option value="Weekly">Weekly</option>
+        <option value="Monthly">Monthly</option>
+    </select>
+
+    <label for="class">Date End:</label>
+    <input type="datetime-local"  name="end_date" id="end_date">
+
     <input class="button--action" type='submit' value="Add">
 </form>
 

@@ -7,6 +7,24 @@
         <input type="text" id="name" name="name" value="{{gym_class.name}}" required autofocus>
     </div>
 
+    <div>
+        <label for="title">Start:</label>
+        <input type="date"  id="date_start" name="date_start" value="{{gym_class.date_start}}" required autofocus>
+    </div>
+
+
+    <div>
+        <label for="title">Repeating:</label>
+        <input type="text" id="repeating" name="repeating" value="{{gym_class.repeating}}" required autofocus>
+    </div>
+
+
+    <div>
+        <label for="title">End:</label>
+        <input type="date"  id="end_date" name="end_date" value="{{gym_class.end_date}}" required autofocus>
+    </div>
+
+
     <button type="submit">Update Class</button>
 
 </form>

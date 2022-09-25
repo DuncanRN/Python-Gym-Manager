@@ -12,6 +12,9 @@ CREATE TABLE members (
 -- classes renamed - gym_classes
 CREATE TABLE gym_classes (
     name VARCHAR(255),
+    date_start TIMESTAMP,
+    repeating VARCHAR(255),
+    end_date TIMESTAMP,
     id SERIAL PRIMARY KEY
 );
 

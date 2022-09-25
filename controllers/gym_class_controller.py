@@ -34,8 +34,10 @@ def new_gym_class():
 @gym_classes_blueprint.route("/classes",  methods=['POST'])
 def create_gym_class():
     name = request.form['name']
-    
-    gym_class = GymClass(name)
+    date_start = request.form['date_start']
+    repeating = request.form['repeating']
+    end_date = request.form['end_date']
+    gym_class = GymClass(name, date_start, repeating, end_date)
     gym_class_repository.save(gym_class)
     return redirect('/classes')
 
@@ -54,6 +56,9 @@ def edit_class(id):
 def update_class(id):
     # pdb.set_trace()
     name = request.form['name']
-    gym_class_to_update = GymClass(name, id)
+    date_start = request.form['date_start']
+    repeating = request.form['repeating']
+    end_date = request.form['end_date']
+    gym_class_to_update = GymClass(name, date_start, repeating, end_date, id)
     gym_class_repository.update(gym_class_to_update)
     return redirect ('/classes/' + id)

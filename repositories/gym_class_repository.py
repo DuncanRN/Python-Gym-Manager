@@ -4,16 +4,16 @@ from models.gym_class import GymClass
 from models.member import Member
 
 def save(gym_class):
-    sql = "INSERT INTO gym_classes ( name ) VALUES ( %s ) RETURNING id"
-    values = [gym_class.name]
+    sql = "INSERT INTO gym_classes ( name , date_start , repeating , end_date ) VALUES ( %s , %s, %s, %s) RETURNING id"
+    values = [gym_class.name, gym_class.date_start, gym_class.repeating, gym_class.end_date]
     results = run_sql( sql, values )
     gym_class.id = results[0]['id']
     return gym_class
 
 def update(gym_class):
     # pdb.set_trace()
-    sql = "UPDATE gym_classes SET name = %s WHERE id = %s"
-    values = [gym_class.name, gym_class.id]
+    sql = "UPDATE gym_classes SET name = %s, date_start = %s, repeating = %s, end_date = %s WHERE id = %s"
+    values = [gym_class.name, gym_class.date_start, gym_class.repeating, gym_class.end_date,  gym_class.id]
     run_sql(sql, values)
 
 def select_all():
@@ -23,7 +23,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        gym_class = GymClass(row['name'], row['id'])
+        gym_class = GymClass(row['name'], row['date_start'], row['repeating'], row['end_date'], row['id'])
         gym_classes.append(gym_class)
     return gym_classes
 
@@ -36,7 +36,7 @@ def select(id):
 
     if results:
         result = results[0]
-        gym_class = GymClass(result['name'],  result['id'])
+        gym_class = GymClass(result['name'], result['date_start'], result['repeating'], result['end_date'], result['id'])
     return gym_class
 
 
