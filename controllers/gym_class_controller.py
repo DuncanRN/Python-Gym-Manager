@@ -1,3 +1,4 @@
+import pdb
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.gym_class import GymClass
@@ -37,3 +38,22 @@ def create_gym_class():
     gym_class = GymClass(name)
     gym_class_repository.save(gym_class)
     return redirect('/classes')
+
+
+
+
+@gym_classes_blueprint.route("/classes/<id>/edit")
+def edit_class(id):
+    gym_class = gym_class_repository.select(id)
+    return render_template("classes/edit.html", gym_class=gym_class)
+
+# UPDATE
+# PUT (although really POST) /members/{{member.id}}/edit
+
+@gym_classes_blueprint.route("/classes/<id>/update", methods=['POST'])
+def update_class(id):
+    # pdb.set_trace()
+    name = request.form['name']
+    gym_class_to_update = GymClass(name, id)
+    gym_class_repository.update(gym_class_to_update)
+    return redirect ('/classes/' + id)

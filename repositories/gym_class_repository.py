@@ -1,3 +1,4 @@
+import pdb
 from db.run_sql import run_sql
 from models.gym_class import GymClass
 from models.member import Member
@@ -8,6 +9,12 @@ def save(gym_class):
     results = run_sql( sql, values )
     gym_class.id = results[0]['id']
     return gym_class
+
+def update(gym_class):
+    # pdb.set_trace()
+    sql = "UPDATE gym_classes SET name = %s WHERE id = %s"
+    values = [gym_class.name, gym_class.id]
+    run_sql(sql, values)
 
 def select_all():
     gym_classes = []
@@ -51,3 +58,4 @@ def delete_all():
     sql = "DELETE FROM gym_classes"
     run_sql(sql)
     
+

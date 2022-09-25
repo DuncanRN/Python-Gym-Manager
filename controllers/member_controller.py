@@ -31,6 +31,7 @@ def create_member():
     member_repository.save(member)
     return redirect('/members')
 
+
 @members_blueprint.route("/members/<id>/edit")
 def edit_member(id):
     member = member_repository.select(id)
