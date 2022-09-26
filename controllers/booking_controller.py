@@ -1,9 +1,11 @@
-from ast import Delete
+from email import message
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.booking import Booking
 import repositories.booking_repository as booking_repository
 import repositories.gym_class_repository as gym_class_repository
+
+import repositories.member_repository as member_repository
 
 bookings_blueprint = Blueprint("booking", __name__)
 
@@ -23,8 +25,23 @@ def create_booking():
     if len(members_in_class) == this_gym_class.capacity:
         return redirect('classes/error_message/0') # error message 0 will be a class at capacity error
     else:
-        booking_repository.save(booking)
-        return redirect('/classes/'+gym_class_id)
+        membership_level= member_repository.select(member_id).membership
+
+        daytime_of_class = this_gym_class.date_start
+        hour_of_class = daytime_of_class.hour
+        # defining peak times as 5pm - 7pm
+        if membership_level=="Standard" and hour_of_class>16 and hour_of_class<20:
+            return redirect('classes/error_message/1') # error message 1 will be a peak time / standard membership problem
+        else:
+            booking_repository.save(booking)
+            return redirect('/classes/'+gym_class_id)
+
+        # time_of_class 
+        # peak_time = 
+        # if we are Standard membership AND inside of peak times
+        #   send error message
+        # else
+        #   book them in
 
 # DELETE
 # DELETE (acutally GET) '/bookings/13/16/delete'

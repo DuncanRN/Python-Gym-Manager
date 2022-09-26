@@ -156,6 +156,8 @@ def calendar():
 def error_message(error_id):
     if error_id == "0":
         error_message="Apologies, that class is full"
+    elif error_id == "1":
+        error_message="Apologies, you require Premium membership to book during peak hours"
     else:
         error_message="UNKNOWN ERROR!!! error is " + error_id
 
