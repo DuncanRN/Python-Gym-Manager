@@ -7,11 +7,12 @@
     <form action="/bookings" method="post">
         <label for="member">Book into this class:</label>
         <select name="member_id" id="member">
-            {% for member in all_members %}
+            {% for member in all_members_not_in_this_class %}
+                
                 <option value="{{ member.id }}">
                     {{ member.first_name }} {{ member.last_name }}
                 </option>
-                
+                    
             {% endfor %}
         </select>
 
@@ -25,7 +26,7 @@
 <div>
 <h3>Attending:</h3>
 <ul>
-    {% for member in members %}
+    {% for member in members_of_this_class %}
         <li>
             {{member.first_name}}  {{member.last_name}} 
             <a href="/bookings/{{ gym_class.id}}/{{ member.id }}/delete">X</a>

@@ -4,7 +4,7 @@ from flask import Blueprint
 from models.gym_class import GymClass
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
-from datetime import date
+from datetime import date, datetime
 from dateutil.relativedelta import relativedelta # using this to add a month onto a date
 
 gym_classes_blueprint = Blueprint("gym_class", __name__)
@@ -19,10 +19,38 @@ def show(id):
     # we want to get the class details and all the members of that class
     gym_class = gym_class_repository.select(id)
 
-    members = gym_class_repository.members(id)
-
+    members_of_this_class = gym_class_repository.members(id)
     all_members = member_repository.select_all()
-    return render_template("classes/show.html", gym_class=gym_class, members=members, all_members=all_members)
+
+    all_members_not_in_this_class = [x for x in all_members if x not in members_of_this_class]
+    #  THIS LINE IS CURRENTLY NOT WORKING....
+
+
+
+    # members_of_this_class_set = set(members_of_this_class) 
+    # all_members_not_in_this_class = [x for x in all_members if x not in members_of_this_class_set]
+
+    # all_members_not_in_this_class = all_members
+    # for member_in_class in members_of_this_class:
+    #     if all_members.count(member_in_class):
+    #         all_members_not_in_this_class.remove(member_in_class)
+
+
+    # print("members of this class")
+    # for member in members_of_this_class:
+    #     print(member.first_name)
+    
+    # print("")
+    # print("all members ")
+    # for member in all_members:
+    #     print(member.first_name)
+
+    # print("")
+    # print("all members not in this class")
+    # for member in all_members_not_in_this_class:
+    #     print(member.first_name)
+
+    return render_template("classes/show.html", gym_class=gym_class, all_members_not_in_this_class=all_members_not_in_this_class, members_of_this_class=members_of_this_class)
 
 @gym_classes_blueprint.route("/classes/new")
 def new_gym_class():
@@ -72,6 +100,7 @@ def update_class(id):
 
 @gym_classes_blueprint.route("/classes/calendar")
 def calendar():
+    # pdb.set_trace()
     # Get all gym_classes
     gym_classes = gym_class_repository.select_all() 
     # organise this list into ALL the classes since some are repeating and will occur more than once
@@ -80,34 +109,44 @@ def calendar():
     for gym_class in gym_classes:
         # class_date = start date from repo
         current_class_date = gym_class.date_start
-        # 	while class_date < end date
-        if gym_class.repeating=="None":
-            gym_classes_calendar.append(gym_class)
-        else:
-            while current_class_date < gym_class.end_date: 
+        todays_date = datetime.now()
+        # check we aren't already after the start date
+        if current_class_date >= todays_date:
+            # 	while class_date < end date
+            if gym_class.repeating=="None":
                 gym_classes_calendar.append(gym_class)
-                # If class repeats monthly
-                if gym_class.repeating == "Monthly":
-                    current_class_date = current_class_date + relativedelta(months=1)
-                elif gym_class.repeating == "Weekly":
-                    current_class_date = current_class_date + relativedelta(weeks=1)
-                
+            else:
+                while current_class_date < gym_class.end_date: 
+                    
+                    gym_class_to_append = {'name' : gym_class.name, 
+                                            'date_start' : current_class_date,
+                                            'repeating' : gym_class.repeating, 
+                                            'end_date' : gym_class.end_date, 
+                                            'id' : gym_class.id
+                                            }
+                    gym_classes_calendar.append(gym_class_to_append)
+
+                    # If class repeats monthly
+                    if gym_class.repeating == "Monthly":
+                        current_class_date = current_class_date + relativedelta(months=1)
+                        gym_class.date_start = current_class_date
+                        print("monthly trying to set date start to " + str(current_class_date))
+                    elif gym_class.repeating == "Weekly":
+                        current_class_date = current_class_date + relativedelta(weeks=1)
+                        gym_class.date_start = current_class_date
+                        # print("weekly trying to set date start to " + str(current_class_date))
+                        # print(gym_class.date_start)
+                    #  THIS ISN"T QUITE working, the gym_class is being handed over with only it's original start
+                    
+                    # print("hi")
+                    # # print(gym_classes_calendar[0].__dict__)
+                    # for gym in gym_classes_calendar:
+                    #     print(gym.__dict__)
 
         
+
     return render_template("classes/calendar.html", gym_classes_calendar = gym_classes_calendar)
-    
-                    # date_after_month = datetime.today()
-                    # print('Today: ',datetime.today().strftime('%d/%m/%Y'))
-                    # print('After Month:', date_after_month.strftime('%d/%m/%Y'))
 
-            # 		    add a month to the class_date
-            #       if class repeates weekly
-            #           add a week to the class_date
-            # 		append that in class output
-
-# If weekly
-# 	add week to class date
-# 		while class_…..
 
 
 
