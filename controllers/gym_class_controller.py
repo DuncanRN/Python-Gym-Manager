@@ -4,6 +4,8 @@ from flask import Blueprint
 from models.gym_class import GymClass
 import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
+from datetime import date
+from dateutil.relativedelta import relativedelta # using this to add a month onto a date
 
 gym_classes_blueprint = Blueprint("gym_class", __name__)
 
@@ -18,15 +20,18 @@ def show(id):
     gym_class = gym_class_repository.select(id)
 
     members = gym_class_repository.members(id)
-    #  this line was members = member_repository.gym_classes(id)
 
     all_members = member_repository.select_all()
     return render_template("classes/show.html", gym_class=gym_class, members=members, all_members=all_members)
 
 @gym_classes_blueprint.route("/classes/new")
 def new_gym_class():
-    return render_template("classes/add.html")
 
+    # get current year to help with default end date in this upcoming form
+
+    current_year = date.today().year
+
+    return render_template("classes/add.html", current_year=current_year)
 
 
 # CREATE
@@ -62,3 +67,48 @@ def update_class(id):
     gym_class_to_update = GymClass(name, date_start, repeating, end_date, id)
     gym_class_repository.update(gym_class_to_update)
     return redirect ('/classes/' + id)
+
+
+
+@gym_classes_blueprint.route("/classes/calendar")
+def calendar():
+    # Get all gym_classes
+    gym_classes = gym_class_repository.select_all() 
+    # organise this list into ALL the classes since some are repeating and will occur more than once
+    gym_classes_calendar = []
+
+    for gym_class in gym_classes:
+        # class_date = start date from repo
+        current_class_date = gym_class.date_start
+        # 	while class_date < end date
+        if gym_class.repeating=="None":
+            gym_classes_calendar.append(gym_class)
+        else:
+            while current_class_date < gym_class.end_date: 
+                gym_classes_calendar.append(gym_class)
+                # If class repeats monthly
+                if gym_class.repeating == "Monthly":
+                    current_class_date = current_class_date + relativedelta(months=1)
+                elif gym_class.repeating == "Weekly":
+                    current_class_date = current_class_date + relativedelta(weeks=1)
+                
+
+        
+    return render_template("classes/calendar.html", gym_classes_calendar = gym_classes_calendar)
+    
+                    # date_after_month = datetime.today()
+                    # print('Today: ',datetime.today().strftime('%d/%m/%Y'))
+                    # print('After Month:', date_after_month.strftime('%d/%m/%Y'))
+
+            # 		    add a month to the class_date
+            #       if class repeates weekly
+            #           add a week to the class_date
+            # 		append that in class output
+
+# If weekly
+# 	add week to class date
+# 		while class_…..
+
+
+
+

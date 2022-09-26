@@ -9,19 +9,35 @@
 
     <div>
         <label for="title">Start:</label>
-        <input type="date"  id="date_start" name="date_start" value="{{gym_class.date_start}}" required autofocus>
+        <input  type="datetime-local"  id="date_start" name="date_start" value="{{gym_class.date_start}}" required autofocus>
     </div>
 
 
     <div>
         <label for="title">Repeating:</label>
-        <input type="text" id="repeating" name="repeating" value="{{gym_class.repeating}}" required autofocus>
+        <select name="repeating" id="repeating">
+            <option value="None"  
+                {% if gym_class.repeating== 'None' %} selected="selected"{% endif %}>
+                    No Repeats
+            </option>
+            <option value="Weekly"
+                {% if gym_class.repeating == 'Weekly' %}
+                        selected="selected"
+                    {% endif %}
+                >Weekly
+            </option>
+            <option value="Monthly"
+                {% if gym_class.repeating == 'Monthly' %}
+                    selected="selected"
+                {% endif %}
+                >Monthly</option>
+        </select>
     </div>
 
 
     <div>
         <label for="title">End:</label>
-        <input type="date"  id="end_date" name="end_date" value="{{gym_class.end_date}}" required autofocus>
+        <input  type="datetime-local"  id="end_date" name="end_date" value="{{gym_class.end_date}}" required autofocus>
     </div>
 
 
