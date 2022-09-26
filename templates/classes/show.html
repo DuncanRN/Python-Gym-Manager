@@ -29,6 +29,7 @@
     {% for member in members_of_this_class %}
         <li>
             {{member.first_name}}  {{member.last_name}} 
+            Membership : {{ member.membership  }}
             <a href="/bookings/{{ gym_class.id}}/{{ member.id }}/delete">X</a>
         </li>
     {% endfor %}

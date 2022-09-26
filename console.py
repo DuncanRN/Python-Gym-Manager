@@ -11,13 +11,19 @@ member_repository.delete_all()
 gym_class_repository.delete_all()
 booking_repository.delete_all()
 
-member_1 = Member("Peter", "La Fleur")
+
+member_1 = Member("Peter", "LaFleur", "Premium")
 member_repository.save(member_1)
 
-member_2 = Member("Patches", "OHoulihan")
+member_2_first_name = "Patches"
+member_2_last_name = "O'Houlihan"
+
+# member_2_last_name= member_2_last_name.replace("'","\\'").strip("\\'")
+
+member_2 = Member(member_2_first_name , member_2_last_name, "Premium")
 member_repository.save(member_2)
 
-member_3 = Member("White", "Goodman")
+member_3 = Member("White", "Goodman", "Standard")
 member_repository.save(member_3)
 
 

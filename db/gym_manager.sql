@@ -6,6 +6,7 @@ DROP TABLE members;
 CREATE TABLE members (
     first_name VARCHAR(255),
     last_name VARCHAR(255),
+    membership VARCHAR(255),
     id SERIAL PRIMARY KEY
 );
 

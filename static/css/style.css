@@ -1,0 +1,60 @@
+body{
+    font-family: "Helvetica", arial, sans-serif; font-size: 16px;
+}
+
+.buttons {
+    margin-top: 10px;
+    margin-left: 2px;
+    font-size: 1.4em;
+    color: #aab8c2;
+}
+
+
+input, select, button {
+    font-size: 100%;
+    width : 100%;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.trash-button{
+    display: contents;
+    font-size: 65%;
+}
+
+
+.delete-form{
+    display: inline;
+}
+
+nav{
+    display: flex;
+    padding: 10px;
+    background-color: grey;
+    color: white;
+}
+
+nav li a{
+    text-decoration: none;
+}
+
+nav li a:visited{
+    color: white;
+}
+
+nav li{
+    padding-right: 10px;
+    list-style: none;
+    color: white;
+    font-family: "Helvetica", arial, sans-serif; font-size: 14px;
+}
+
+#content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: 0 auto;
+}
+
+

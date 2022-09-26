@@ -8,16 +8,18 @@ from models.gym_class import GymClass
 # the colours aren't right there, but I think that is ok...?
 
 def save(member):
-    sql = "INSERT INTO members(first_name, last_name) VALUES ( %s, %s ) RETURNING id"
-    values = [member.first_name, member.last_name]
+    sql = "INSERT INTO members (first_name, last_name, membership) VALUES ( %s, %s, %s ) RETURNING id"
+    values = [member.first_name, member.last_name, member.membership]
+    print(sql)
+    print(values)
     results = run_sql( sql, values )
     member.id = results[0]['id']
     return member
 
 def update(member):
     # pdb.set_trace()
-    sql = "UPDATE members SET (first_name, last_name) = (%s, %s) WHERE id = %s"
-    values = [member.first_name, member.last_name, member.id]
+    sql = "UPDATE members SET (first_name, last_name, membership) = (%s, %s, %s) WHERE id = %s"
+    values = [member.first_name, member.last_name, member.membership, member.id]
     run_sql(sql, values)
 
 def select_all():
@@ -27,7 +29,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        member = Member(row['first_name'], row['last_name'], row['id'])
+        member = Member(row['first_name'], row['last_name'], row['membership'], row['id'])
         members.append(member)
     return members
 
@@ -39,7 +41,7 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        member = Member(result['first_name'], result['last_name'], result['id'] )
+        member = Member(result['first_name'], result['last_name'], result['membership'], result['id'] )
     return member
 
 def gym_classes(member_id):
