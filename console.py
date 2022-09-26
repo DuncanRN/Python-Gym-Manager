@@ -21,11 +21,11 @@ member_3 = Member("White", "Goodman")
 member_repository.save(member_3)
 
 
-gym_class_1 = GymClass("Dodge, Duck, Dip, Dive and Dodge", "2023-01-01 00:00:01", 'None', "1970-01-01 00:00:01")
+gym_class_1 = GymClass("Dodge, Duck, Dip, Dive and Dodge", "2023-01-01 00:00:01", 'None', "1970-01-01 00:00:01", 5)
 gym_class_repository.save(gym_class_1)
-gym_class_2 = GymClass("Swimming for Beginners", "2022-11-01 00:00:01", 'None', "1970-01-01 00:00:01")
+gym_class_2 = GymClass("Swimming for Beginners", "2022-11-01 00:00:01", 'None', "1970-01-01 00:00:01", 2)
 gym_class_repository.save(gym_class_2)
-gym_class_3 = GymClass("Strength and Conditioning",  "2022-06-01 00:00:01", 'None', "1970-01-01 00:00:01")
+gym_class_3 = GymClass("Strength and Conditioning",  "2022-06-01 00:00:01", 'None', "1970-01-01 00:00:01", 3)
 gym_class_repository.save(gym_class_3)
 
 booking_1 = Booking(member_1.id, gym_class_1.id)

@@ -25,8 +25,6 @@ def show(id):
     all_members_not_in_this_class = [x for x in all_members if x not in members_of_this_class]
     #  THIS LINE IS CURRENTLY NOT WORKING....
 
-
-
     # members_of_this_class_set = set(members_of_this_class) 
     # all_members_not_in_this_class = [x for x in all_members if x not in members_of_this_class_set]
 
@@ -70,7 +68,9 @@ def create_gym_class():
     date_start = request.form['date_start']
     repeating = request.form['repeating']
     end_date = request.form['end_date']
-    gym_class = GymClass(name, date_start, repeating, end_date)
+    capacity = request.form['capacity']
+    
+    gym_class = GymClass(name, date_start, repeating, end_date, capacity)
     gym_class_repository.save(gym_class)
     return redirect('/classes')
 
@@ -92,7 +92,9 @@ def update_class(id):
     date_start = request.form['date_start']
     repeating = request.form['repeating']
     end_date = request.form['end_date']
-    gym_class_to_update = GymClass(name, date_start, repeating, end_date, id)
+    capacity = request.form['capacity']
+    
+    gym_class_to_update = GymClass(name, date_start, repeating, end_date, capacity, id)
     gym_class_repository.update(gym_class_to_update)
     return redirect ('/classes/' + id)
 
@@ -122,6 +124,7 @@ def calendar():
                                             'date_start' : current_class_date,
                                             'repeating' : gym_class.repeating, 
                                             'end_date' : gym_class.end_date, 
+                                            'capacity' : gym_class.capacity,
                                             'id' : gym_class.id
                                             }
                     gym_classes_calendar.append(gym_class_to_append)
@@ -130,7 +133,7 @@ def calendar():
                     if gym_class.repeating == "Monthly":
                         current_class_date = current_class_date + relativedelta(months=1)
                         gym_class.date_start = current_class_date
-                        print("monthly trying to set date start to " + str(current_class_date))
+                        # print("monthly trying to set date start to " + str(current_class_date))
                     elif gym_class.repeating == "Weekly":
                         current_class_date = current_class_date + relativedelta(weeks=1)
                         gym_class.date_start = current_class_date
@@ -149,5 +152,12 @@ def calendar():
 
 
 
+@gym_classes_blueprint.route("/classes/error_message/<error_id>")
+def error_message(error_id):
+    if error_id == "0":
+        error_message="Apologies, that class is full"
+    else:
+        error_message="UNKNOWN ERROR!!! error is " + error_id
 
+    return render_template("classes/error.html", error_message = error_message)
 

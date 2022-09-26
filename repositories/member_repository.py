@@ -52,7 +52,7 @@ def gym_classes(member_id):
     results = run_sql(sql, values)
 
     for row in results:
-        gym_class = GymClass(row['name'], row['date_start'], row['repeating'], row['end_date'], row['id'])
+        gym_class = GymClass(row['name'], row['date_start'], row['repeating'], row['end_date'], row['capacity'], row['id'])
         gym_classes.append(gym_class)
     return gym_classes
 

@@ -15,6 +15,7 @@ CREATE TABLE gym_classes (
     date_start TIMESTAMP,
     repeating VARCHAR(255),
     end_date TIMESTAMP,
+    capacity INT,
     id SERIAL PRIMARY KEY
 );
 
