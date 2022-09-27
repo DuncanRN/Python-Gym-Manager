@@ -5,13 +5,23 @@
 
 <form action="/members" method="post">
     <label for="member">First Name:</label>
-    <input name="first_name" id="user">
+    <input name="first_name" id="first_name">
     
     <label for="location">Last Name:</label>
-    <input name="last_name" id="user">
+    <input name="last_name" id="last_name">
 
-    <label for="location">Membership:</label>
-    <input name="membership" id="user">
+    <label for="location">Membership Level:</label>
+    <select name="membership" id="membership">
+        <option value="Premium">Premium</option>
+        <option value="Standard">Standard</option>
+    </select>
+
+    <label for="location">Membership Status:</label>
+    
+    <select name="active" id="active">
+        <option value="True">Activated</option>
+        <option value="False">Deactivated</option>
+    </select>
     
     <input class="button--action" type='submit' value="Add">
 </form>

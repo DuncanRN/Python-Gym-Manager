@@ -12,6 +12,13 @@
     <tr>
         <td><a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}} 
             membership : {{member.membership}}
+<br>
+
+            Status : {%  if member.active == True %}
+                        Activated
+                    {% else %}
+                        Deactivated
+                    {%  endif %}
         </a></td>
     </tr>
     {% endfor %}

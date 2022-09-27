@@ -4,6 +4,12 @@
 <h1> {{member.first_name}} {{member.last_name}}</h1>
 <h2> Membership: {{member.membership}} </h2>
 
+<h2> Status : {%  if member.active==True %}
+                        Activated
+                    {% else %}
+                        Deactivated
+                    {%  endif %}  </h2>
+
 <h3>Attending:</h3>
 
 <ul>
@@ -12,6 +18,8 @@
             {{ gym_class.name }}
         </li>
     {% endfor %}
+
+    
 
 </ul>
 

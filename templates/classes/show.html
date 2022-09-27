@@ -16,6 +16,8 @@
             {% endfor %}
         </select>
 
+
+
         <input type="hidden" name="gym_class_id" value="{{ gym_class.id }}">
 
         <input class="button-action" type='submit' value="Book">
@@ -30,7 +32,15 @@
         <li>
             {{member.first_name}}  {{member.last_name}} 
             Membership : {{ member.membership  }}
+            Status : {%  if member.active==True %}
+                        Activated
+                    {% else %}
+                        Deactivated
+                    {%  endif %}
+member active variable = {{  member.active }}
             <a href="/bookings/{{ gym_class.id}}/{{ member.id }}/delete">X</a>
+
+            <br>
         </li>
     {% endfor %}
 

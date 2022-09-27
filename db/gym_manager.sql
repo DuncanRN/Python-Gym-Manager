@@ -7,6 +7,7 @@ CREATE TABLE members (
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     membership VARCHAR(255),
+    active BOOLEAN,
     id SERIAL PRIMARY KEY
 );
 

@@ -13,9 +13,24 @@
     </div>
 
     <div>
-        <label for="membership">Membership:</label>
+        <label for="membership">Membership Level:</label>
         <input type="text" id="membership" name="membership" value="{{member.membership}}" required>
     </div>
+
+
+
+    <div>
+        <label for="membership">Membership Status:</label>
+        <select name="active" id="active">
+            <option value="True" >Activated</option>
+            <option value="False"   {%  if member.active==False %}
+                                        selected="selected"
+                                    {% endif %}
+            >Deactivated</option>
+        </select>
+    </div>
+    
+
 
     <button type="submit">Update Member</button>
 
