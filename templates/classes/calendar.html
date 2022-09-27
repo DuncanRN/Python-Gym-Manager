@@ -3,8 +3,6 @@
 {% block content %}
 <h1>Calendar</h1>
 
-CALENDAR STUFF HERE
-
 {% for gym_class in gym_classes_calendar %}
     <p>{{ gym_class.name  }} happening on  {{ gym_class.date_start  }} </p>
 {% endfor %}

@@ -34,12 +34,14 @@ def create_booking():
         if membership_level=="Standard" and hour_of_class>16 and hour_of_class<20:
             return redirect('classes/error_message/1') # error message 1 will be a peak time / standard membership problem
         else:
-            if this_member.active == True:
-                booking_repository.save(booking)
-                return redirect('/classes/'+gym_class_id)
-            else:
+            if this_member.active != True:
                 return redirect('classes/error_message/2') # error message 2 is "member is deactivated"
-
+            else:
+                if this_gym_class.status=="Deactivated":
+                    return redirect('classes/error_message/3') # error message 3 is "class is deactivated"
+                else:
+                    booking_repository.save(booking)
+                    return redirect('/classes/'+gym_class_id)
             
 
         # time_of_class 
