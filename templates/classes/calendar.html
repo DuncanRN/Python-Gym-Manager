@@ -2,9 +2,19 @@
 
 {% block content %}
 <h1>Calendar</h1>
-
+<div>
 {% for gym_class in gym_classes_calendar %}
-    <p>{{ gym_class.name  }} happening on  {{ gym_class.date_start  }} </p>
-{% endfor %}
 
+
+
+
+    <p><a href='/classes/{{ gym_class.id }}'>
+        {{ gym_class.name  }} happening on  {{ gym_class.date_start.strftime('%d/%m/%Y') }} at  {{ gym_class.date_start.strftime("%H:%M") }}   
+    
+    </a>
+
+</p>
+        <hr>
+{% endfor %}
+</div>
 {% endblock %}

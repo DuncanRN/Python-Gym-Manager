@@ -6,6 +6,7 @@ import repositories.gym_class_repository as gym_class_repository
 import repositories.member_repository as member_repository
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta # using this to add a month onto a date
+from operator import itemgetter
 
 gym_classes_blueprint = Blueprint("gym_class", __name__)
 
@@ -116,7 +117,23 @@ def calendar():
         if current_class_date >= todays_date:
             # 	while class_date < end date
             if gym_class.repeating=="None":
-                gym_classes_calendar.append(gym_class)
+                # gym_classes_calendar.append(gym_class)
+                # I did that line above befor, but we ended up with a list of 
+                # some dictionaries but also some objects of type GymClass and I couldn't
+                # then sort that by date. So I'm going to make them all into dictionaries,
+                # put those in a list, then organise the list
+
+
+                gym_class_to_append = {'name' : gym_class.name, 
+                                            'date_start' : gym_class.date_start,
+                                            'repeating' : gym_class.repeating, 
+                                            'end_date' : gym_class.end_date, 
+                                            'capacity' : gym_class.capacity,
+                                            'status' : gym_class.status,
+                                            'id' : gym_class.id
+                                            }
+                gym_classes_calendar.append(gym_class_to_append)
+
             else:
                 while current_class_date < gym_class.end_date: 
                     
@@ -148,8 +165,15 @@ def calendar():
                     #     print(gym.__dict__)
 
         
+    # gym_classes_calendar_sorted = sorted(gym_classes_calendar, key=lambda d: d['date_start']) 
+    # pdb.set_trace()
+    gym_classes_calendar_sorted = sorted(gym_classes_calendar, key=itemgetter('date_start'))
+    
+    # gym_classes_calendar_sorted = sorted(gym_classes_calendar, key=lambda x: x['date_start'])
 
-    return render_template("classes/calendar.html", gym_classes_calendar = gym_classes_calendar)
+    # gym_classes_calendar_sorted = sorted(gym_classes_calendar, key=lambda d: d['name'])
+
+    return render_template("classes/calendar.html", gym_classes_calendar = gym_classes_calendar_sorted)
 
 
 

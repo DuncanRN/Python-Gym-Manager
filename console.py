@@ -14,7 +14,6 @@ booking_repository.delete_all()
 
 member_1 = Member("Peter", "LaFleur", "Premium", True)
 member_repository.save(member_1)
-
 member_2_first_name = "Patches"
 member_2_last_name = "O'Houlihan"
 
@@ -26,12 +25,25 @@ member_repository.save(member_2)
 member_3 = Member("White", "Goodman", "Standard", True)
 member_repository.save(member_3)
 
+member_4 = Member("Steve", "The Pirate", "Premium", True)
+member_repository.save(member_4)
 
-gym_class_1 = GymClass("Dodge, Duck, Dip, Dive and Dodge", "2023-01-01 00:00:01", 'None', "1970-01-01 00:00:01", 5, "Active")
+member_5 = Member("Kate", "Veatch", "Standard", True)
+member_repository.save(member_5)
+
+member_6 = Member("Martha", "Johnstone", "Standard", False)
+member_repository.save(member_6)
+
+
+gym_class_1 = GymClass("Dodge, Duck, Dip, Dive and Dodge", "2023-01-01 14:30:00", 'None', "1970-01-01 00:00:01", 5, "Active")
 gym_class_repository.save(gym_class_1)
-gym_class_2 = GymClass("Swimming for Beginners", "2022-11-01 00:00:01", 'None', "1970-01-01 00:00:01", 2, "Active")
+gym_class_2 = GymClass("Swimming for Beginners", "2022-11-01 09:30:00", 'None', "1970-01-01 00:00:01", 2, "Active")
 gym_class_repository.save(gym_class_2)
-gym_class_3 = GymClass("Strength and Conditioning",  "2022-06-01 00:00:01", 'None', "1970-01-01 00:00:01", 3, "Deactivated")
+gym_class_3 = GymClass("Strength and Conditioning",  "2022-06-01 12:15:00", 'None', "1970-01-01 00:00:01", 3, "Deactivated")
+gym_class_repository.save(gym_class_3)
+gym_class_3 = GymClass("Spin Class",  "2022-06-02 14:45:00", 'None', "1970-01-01 00:00:01", 3, "Active")
+gym_class_repository.save(gym_class_3)
+gym_class_3 = GymClass("Archery",  "2022-11-21 18:30:00", 'None', "1970-01-01 00:00:01", 5, "Active")
 gym_class_repository.save(gym_class_3)
 
 booking_1 = Booking(member_1.id, gym_class_1.id)

@@ -2,25 +2,129 @@ body{
     font-family: "Helvetica", arial, sans-serif; font-size: 16px;
 }
 
+
+a {
+    color: white;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-decoration: none;
+    background: rgb(39, 126, 158);
+    padding: 20px 5px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+
+}
+
+a:hover {
+    background: rgba(120, 136, 186, 0.75);
+}
+
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 3em 1.5em;
+}
+
+/* .navigation ul {
+    border: 1px solid rgb(2, 24, 95);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+} */
+
+
+.navigation ul {  border: 1px solid rgb(4, 77, 28);  
+    list-style: none;  margin: 0;  padding: 0;  display: flex; 
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.navigation li { flex: 3;  }
+
+.navigation ul {
+    flex-wrap: nowrap;
+}
+
+a{
+
+    border-radius: 25px;
+
+}
+
+nav a {
+
+    border-radius: 0px;
+}
+
+@media all and (max-width: 1000px) {
+    .navigation ul {
+        flex-wrap: wrap;
+    }
+    
+    .navigation li {
+        flex: 1 1 50%;
+    }
+
+    .navigation .user {
+        flex: 1 1 33.33%;
+    }
+}
+
+@media all and (max-width: 480px) {
+    .navigation li {
+        flex-basis: 100%;
+    }
+
+    .navigation .user {
+        flex-basis: 50%;
+    }
+}
+
+
+
+/* OLDER BELOW */
+
+
+/* nav{
+    width: 90%; 
+
+    padding: 5px;
+    background-color: grey;
+    color: white;
+} */
+
+/* 
 .buttons {
     margin-top: 10px;
     margin-left: 2px;
     font-size: 1.4em;
     color: #aab8c2;
-}
+} */
 
 
 input, select, button {
+    border-radius: 25px;
+    border: 2px solid #9ec5f1;
     font-size: 100%;
     width : 100%;
     padding: 10px;
     margin: 10px;
     box-sizing: border-box;
+    
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.trash-button{
-    display: contents;
-    font-size: 65%;
+#gym_class_list{
+    
+    border: 1px dotted rgb(178, 190, 228);
+}
+
+#gym_class_list_element{
+    
+    padding: 5px;
 }
 
 
@@ -28,14 +132,10 @@ input, select, button {
     display: inline;
 }
 
-nav{
-    width: 90%;
-    display: flex;
-    flex-flow: row;
-    padding: 5px;
-    background-color: grey;
-    color: white;
+.navLink {
+
 }
+
 
 nav li a{
     text-decoration: none;
@@ -55,7 +155,7 @@ nav li{
 #content{
     display: flex;
     flex-wrap: wrap;
-    width: 300px;
+    width: 400px;
     margin: 0 auto;
 }
 

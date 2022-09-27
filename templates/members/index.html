@@ -1,26 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Users</h1>
 
+<div>
 <table>
     <tr>
-        <th>Name</th>
-    
+        <td><h1>Users</h1></td>
     </tr>
+
+    
     {% for member in members %}
     <tr>
         <td><a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}} 
-            membership : {{member.membership}}
+            <!-- membership : {{member.membership}}
 <br>
 
             Status : {%  if member.active == True %}
                         Activated
                     {% else %}
                         Deactivated
-                    {%  endif %}
+                    {%  endif %} -->
         </a></td>
     </tr>
     {% endfor %}
 </table>
+</div>
 {% endblock %}

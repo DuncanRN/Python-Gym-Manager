@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div>
 <h1> {{member.first_name}} {{member.last_name}}</h1>
-<h2> Membership: {{member.membership}} </h2>
+<h3> Membership: {{member.membership}} </h3>
 
-<h2> Status : {%  if member.active==True %}
+<h3> Status : {%  if member.active==True %}
                         Activated
                     {% else %}
                         Deactivated
-                    {%  endif %}  </h2>
+                    {%  endif %}  </h3>
 
 <h3>Attending:</h3>
 
-<ul>
+<ul id="gym_class_list">
     {% for gym_class in gym_classes %}
-        <li>
+        <li id ="gym_class_list_element">
             {{ gym_class.name }}
         </li>
     {% endfor %}
@@ -25,4 +26,6 @@
 
 <a href="/members/{{ member.id }}/edit">Edit Member</a>
 
+
+</div>
 {% endblock %}
