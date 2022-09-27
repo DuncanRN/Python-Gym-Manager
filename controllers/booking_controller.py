@@ -3,6 +3,7 @@ from flask import Blueprint
 from models.booking import Booking
 import repositories.booking_repository as booking_repository
 import repositories.gym_class_repository as gym_class_repository
+import repositories.member_repository as member_repository
 
 import repositories.member_repository as member_repository
 
@@ -20,6 +21,7 @@ def create_booking():
     # else save this booking
     this_gym_class = gym_class_repository.select(gym_class_id)
     members_in_class = gym_class_repository.members(gym_class_id)
+    this_member = member_repository.select(member_id)
 
     if len(members_in_class) == this_gym_class.capacity:
         return redirect('classes/error_message/0') # error message 0 will be a class at capacity error
@@ -32,8 +34,13 @@ def create_booking():
         if membership_level=="Standard" and hour_of_class>16 and hour_of_class<20:
             return redirect('classes/error_message/1') # error message 1 will be a peak time / standard membership problem
         else:
-            booking_repository.save(booking)
-            return redirect('/classes/'+gym_class_id)
+            if this_member.active == True:
+                booking_repository.save(booking)
+                return redirect('/classes/'+gym_class_id)
+            else:
+                return redirect('classes/error_message/2') # error message 2 is "member is deactivated"
+
+            
 
         # time_of_class 
         # peak_time = 

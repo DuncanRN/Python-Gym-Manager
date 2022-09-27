@@ -158,6 +158,8 @@ def error_message(error_id):
         error_message="Apologies, that class is full"
     elif error_id == "1":
         error_message="Apologies, you require Premium membership to book during peak hours"
+    elif error_id == "2":
+        error_message="Apologies, This member is Deactivated so cannot be added to a class"
     else:
         error_message="UNKNOWN ERROR!!! error is " + error_id
 
