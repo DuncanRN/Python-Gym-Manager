@@ -69,12 +69,11 @@ def create_gym_class():
     repeating = request.form['repeating']
     end_date = request.form['end_date']
     capacity = request.form['capacity']
+    status = request.form['status']
     
-    gym_class = GymClass(name, date_start, repeating, end_date, capacity)
+    gym_class = GymClass(name, date_start, repeating, end_date, capacity, status)
     gym_class_repository.save(gym_class)
     return redirect('/classes')
-
-
 
 
 @gym_classes_blueprint.route("/classes/<id>/edit")
@@ -93,8 +92,9 @@ def update_class(id):
     repeating = request.form['repeating']
     end_date = request.form['end_date']
     capacity = request.form['capacity']
+    status = request.form['status']
     
-    gym_class_to_update = GymClass(name, date_start, repeating, end_date, capacity, id)
+    gym_class_to_update = GymClass(name, date_start, repeating, end_date, capacity, status, id)
     gym_class_repository.update(gym_class_to_update)
     return redirect ('/classes/' + id)
 
@@ -125,6 +125,7 @@ def calendar():
                                             'repeating' : gym_class.repeating, 
                                             'end_date' : gym_class.end_date, 
                                             'capacity' : gym_class.capacity,
+                                            'status' : gym_class.status,
                                             'id' : gym_class.id
                                             }
                     gym_classes_calendar.append(gym_class_to_append)

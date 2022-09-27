@@ -45,6 +45,19 @@
         <input type="text" id="capacity" name="capacity" value="{{gym_class.capacity}}" required autofocus>
     </div>
 
+    <div>
+        <label for="title">Status :</label>
+        <select name="status" id="status">
+            <option value="Active">Active</option>
+            <option value="Deactivated" {% if gym_class.status=="Deactivated" %}
+                                            selected="selected" 
+                                        {% endif %}
+                                        >Deactivated</option>
+        </select>
+        
+        
+    </div>
+
     <button type="submit">Update Class</button>
 
 </form>
