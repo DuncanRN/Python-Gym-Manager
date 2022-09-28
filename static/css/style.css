@@ -43,7 +43,7 @@ body{
 
 
 hr {
-    border-top: 1px dashed rgba(39, 126, 158, 0.326);
+    border-top: 3px dashed rgba(39, 126, 158, 0.326);
 }
 
 table{
@@ -160,11 +160,13 @@ input, select, button {
 
 #gym_class_list{
     
-    border: 1px dotted rgb(178, 190, 228);
+    /* border: 3px dotted rgb(178, 190, 228); */
+    justify: center;
 }
 
 #gym_class_list_element{
     padding: 5px;
+    justify: center;
 }
 
 

@@ -20,13 +20,14 @@
         </select>
 
 
-
+        <input type="hidden" name="redirect_to" value="classes">
         <input type="hidden" name="gym_class_id" value="{{ gym_class.id }}">
 
         <input class="button-action" type='submit' value="Book">
     </form>
 </div>
 
+<br><hr><hr><br>
 
 <div>
 <h3>Attending:</h3>
@@ -44,15 +45,15 @@
             
             <a class="small_link" href="/bookings/{{ gym_class.id}}/{{ member.id }}/delete">X</a>
 
-            <hr>
+            
         </li>
     {% endfor %}
 
 </ul>
 
-
+<br><hr><hr><br>
 <a href="/classes/{{ gym_class.id }}/edit">Edit Class</a>
 
 </div>
-
+<br>
 {% endblock %}

@@ -3,9 +3,7 @@
 {% block content %}
 <div>
 <h1> {{member.first_name}} {{member.last_name}}</h1>
-<h3> Membership: {{member.membership}} </h3>
-
-<h3> Status : {%  if member.active==True %}
+<h3>  {{member.membership}} member, {%  if member.active==True %}
                         Activated
                     {% else %}
                         Deactivated
@@ -21,9 +19,8 @@
     {% endfor %}
 
 </ul>
-
-
-
+<br>
+<hr><hr><br>
 <div>
     <form action="/bookings" method="post">
         <label for="member">Book this user into:</label>
@@ -37,18 +34,15 @@
             {% endfor %}
         </select>
 
-
-
+        
+        <input type="hidden" name="redirect_to" value="members">
         <input type="hidden" name="member_id" value="{{ member.id }}">
 
         <input class="button-action" type='submit' value="Book">
     </form>
 </div>
 
-
-
-
-<hr><hr>
+<br><hr><hr><br>
 <a href="/members/{{ member.id }}/edit">Edit Member</a>
 
 

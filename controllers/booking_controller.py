@@ -15,6 +15,8 @@ bookings_blueprint = Blueprint("booking", __name__)
 def create_booking():
     member_id = request.form['member_id']
     gym_class_id = request.form['gym_class_id']
+    redirect_to = request.form['redirect_to']
+
     booking = Booking(member_id, gym_class_id)
     # check how many people are in the class.
     # if that's equal to the capacity, redirect to an error page
@@ -53,7 +55,10 @@ def create_booking():
         return redirect('classes/error_message/3') # error message 3 is "class is deactivated"
     else:
         booking_repository.save(booking)
-        return redirect('/classes/'+gym_class_id)
+        if redirect_to=="classes":
+            return redirect('/classes/'+gym_class_id)
+        else:
+            return redirect('/members/'+member_id)
     
 
 # DELETE
