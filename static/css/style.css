@@ -3,6 +3,45 @@ body{
     /* background: rgb(221, 226, 229); */
 }
 
+.flex-grid {
+    display: flex;
+    /* width: 100%; */
+}
+.col {
+    flex: 2 1 auto;
+    /* width: 32%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: middle; */
+    border : 230px;
+    
+}
+
+.flex-grid {
+    display: flex;
+}
+
+.flex-grid-child-1 {
+    width: 150px;
+    justify: left;
+}
+
+.flex-grid-child-2 {
+    width: 450px;
+    padding-left:30px;
+    padding-right:30px;
+    justify: center;
+}
+
+.flex-grid-child-3 {
+    width: 150px;
+    justify: right;
+}
+
+/* .flex-grid > * {
+    flex: 0 0 auto;
+} */
+
 
 a {
     color: white;
@@ -34,7 +73,7 @@ a:hover {
 }
 
 .main {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 3em 1.5em;
 }
@@ -105,26 +144,6 @@ nav a {
 
 
 
-/* OLDER BELOW */
-
-
-/* nav{
-    width: 90%; 
-
-    padding: 5px;
-    background-color: grey;
-    color: white;
-} */
-
-/* 
-.buttons {
-    margin-top: 10px;
-    margin-left: 2px;
-    font-size: 1.4em;
-    color: #aab8c2;
-} */
-
-
 input, select, button {
     border-radius: 25px;
     border: 2px solid #9ec5f1;
@@ -148,14 +167,6 @@ input, select, button {
 }
 
 
-.delete-form{
-    display: inline;
-}
-
-.navLink {
-
-}
-
 
 nav li a{
     text-decoration: none;
@@ -175,7 +186,7 @@ nav li{
 #content{
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
+    width: 700px;
     margin: 0 auto;
 }
 

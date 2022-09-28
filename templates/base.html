@@ -3,15 +3,14 @@
 <head>
     <title>Gym Organiser</title>
     
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}"> -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}"> -->
 
     </head>
     <body>
-    <main class="flex flex--row">
-
+    <main>
 
     <div class="main">
         <nav class="navigation">
@@ -26,13 +25,20 @@
         
     </div>
 
-
     <section id="content">
+        <div class="flex-grid">
+            <div class="flex-grid-child-1">
+                    <img src=" {{ url_for('static', filename='img/gym_wing_left.jpg') }}" width="90" height="90">
+            </div>
+            <div class="flex-grid-child-2">
+                {% block content %}
 
-        <img src=" {{ url_for('static', filename='img/gym_wing.png') }}" width="30%" height="30%">
-        {% block content %}
-
-        {% endblock%}
+                {% endblock%}
+            </div>
+            <div class="flex-grid-child-3" >
+                <img src=" {{ url_for('static', filename='img/gym_wing.png') }}" width="90" height="90">
+            </div>
+        </div>
     </section>
     </main>
 </body>
