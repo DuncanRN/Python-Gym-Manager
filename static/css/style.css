@@ -1,40 +1,39 @@
 body{
     font-family: "Helvetica", arial, sans-serif; font-size: 16px;
-    /* background: rgb(221, 226, 229); */
 }
 
 .flex-grid {
     display: flex;
-    /* width: 100%; */
 }
-.col {
+/* .col {
     flex: 2 1 auto;
-    /* width: 32%;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: middle; */
     border : 230px;
     
-}
+}  */
+
+
 
 .flex-grid {
     display: flex;
+    grid-template-columns: 200px 600px 200px;
 }
 
 .flex-grid-child-1 {
-    width: 150px;
+    /* width: 150px; */
     justify: left;
 }
 
 .flex-grid-child-2 {
     width: 450px;
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:40px;
+    padding-right:40px;
     justify: center;
+    border: 3px dashed rgba(39, 126, 158, 0.326);
+
 }
 
 .flex-grid-child-3 {
-    width: 150px;
+    /* width: 150px; */
     justify: right;
 }
 
@@ -43,6 +42,13 @@ body{
 } */
 
 
+hr {
+    border-top: 1px dashed rgba(39, 126, 158, 0.326);
+}
+
+table{
+    justify: center;
+}
 a {
     color: white;
     font-weight: 300;
@@ -60,6 +66,7 @@ a {
     padding: 2px 1px;
     width: 20%;
     margin: 3px;
+    justify: center;
 }
 
 .medium_link{
@@ -87,13 +94,11 @@ a:hover {
 } */
 
 ul {
-    
     list-style: none;  margin: 0;  padding: 0; 
-    
 }
 
 .show_members{
-    width: 150%
+    width: 100%
 }
 
 .navigation ul {  border: 1px solid rgb(4, 77, 28);  
@@ -108,13 +113,10 @@ ul {
 }
 
 a{
-
     border-radius: 25px;
-
 }
 
 nav a {
-
     border-radius: 0px;
 }
 
@@ -162,7 +164,6 @@ input, select, button {
 }
 
 #gym_class_list_element{
-    
     padding: 5px;
 }
 

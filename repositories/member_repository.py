@@ -70,6 +70,26 @@ def gym_classes(member_id):
         gym_classes.append(gym_class)
     return gym_classes
 
+# what classes this member is not in
+def gym_classes_this_member_is_not_in(member_id):
+    gym_classes = []
+    
+    # THIS IS FROM gym_class_repository - 
+    # sql = "SELECT members.* FROM members WHERE id NOT IN (SELECT members.id FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE gym_class_id = %s )"
+    
+    sql = "SELECT gym_classes.* FROM gym_classes WHERE id NOT IN (SELECT gym_classes.id FROM gym_classes INNER JOIN bookings ON bookings.gym_class_id = gym_classes.id WHERE member_id = %s )"
+
+    values = [member_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        #  name, date_start, repeating, end_date, capacity, status, id =
+        gym_class = GymClass(row['name'], row['date_start'], row['repeating'], row['end_date'], row['capacity'], row['status'], row['id'])
+        gym_classes.append(gym_class)
+    return gym_classes
+
+
+
 def delete_all():
     sql = "DELETE FROM members"
     run_sql(sql)

@@ -3,15 +3,11 @@
 {% block content %}
 
 <div>
-<table>
-    <tr>
-        <td><h1>Users</h1></td>
-    </tr>
-
+<h1>Users</h1>
     
     {% for member in members %}
-    <tr>
-        <td><a href="/members/{{ member.id }}"> {{member.first_name}} {{member.last_name}} 
+    <a href="/members/{{ member.id }}" class="medium_link"> {{member.first_name}} {{member.last_name}} 
+        <hr>
             <!-- membership : {{member.membership}}
 <br>
 
@@ -20,9 +16,9 @@
                     {% else %}
                         Deactivated
                     {%  endif %} -->
-        </a></td>
-    </tr>
+        </a>
+    
     {% endfor %}
-</table>
+
 </div>
 {% endblock %}

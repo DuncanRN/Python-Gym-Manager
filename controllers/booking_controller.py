@@ -23,26 +23,38 @@ def create_booking():
     members_in_class = gym_class_repository.members(gym_class_id)
     this_member = member_repository.select(member_id)
 
+    membership_level= member_repository.select(member_id).membership
+
+    daytime_of_class = this_gym_class.date_start
+    hour_of_class = daytime_of_class.hour
+
+    print("about to add in a booking")
+
+
+    print(member_id)
+    print("That was member_id")
+    print(gym_class_id)
+    print("That was gym_class_id")
+
+
+    print(len(members_in_class))
+    print("That was len members in class")
+    print(this_gym_class.capacity)
+    print("That was this gym class capacity")
+    print(" ")
+
     if len(members_in_class) == this_gym_class.capacity:
         return redirect('classes/error_message/0') # error message 0 will be a class at capacity error
+    elif membership_level=="Standard" and hour_of_class>16 and hour_of_class<20:
+        return redirect('classes/error_message/1') # error message 1 will be a peak time / standard membership problem
+    elif this_member.active != True:
+        return redirect('classes/error_message/2') # error message 2 is "member is deactivated"
+    elif this_gym_class.status=="Deactivated":
+        return redirect('classes/error_message/3') # error message 3 is "class is deactivated"
     else:
-        membership_level= member_repository.select(member_id).membership
-
-        daytime_of_class = this_gym_class.date_start
-        hour_of_class = daytime_of_class.hour
-        # defining peak times as 5pm - 7pm
-        if membership_level=="Standard" and hour_of_class>16 and hour_of_class<20:
-            return redirect('classes/error_message/1') # error message 1 will be a peak time / standard membership problem
-        else:
-            if this_member.active != True:
-                return redirect('classes/error_message/2') # error message 2 is "member is deactivated"
-            else:
-                if this_gym_class.status=="Deactivated":
-                    return redirect('classes/error_message/3') # error message 3 is "class is deactivated"
-                else:
-                    booking_repository.save(booking)
-                    return redirect('/classes/'+gym_class_id)
-            
+        booking_repository.save(booking)
+        return redirect('/classes/'+gym_class_id)
+    
 
 # DELETE
 # DELETE (acutally GET) '/bookings/13/16/delete'

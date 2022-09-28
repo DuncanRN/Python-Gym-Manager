@@ -40,7 +40,6 @@ def select(id):
     return gym_class
 
 
-# are we using this next method? - yes when checking in booking contoller if the capactiy has been reached
 def members(gym_class_id):
     members = []
     

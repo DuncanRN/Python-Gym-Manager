@@ -14,7 +14,10 @@ def members():
 def show(id):
     member = member_repository.select(id)
     gym_classes = member_repository.gym_classes(id)
-    return render_template("members/show.html", member=member, gym_classes=gym_classes)
+
+    gym_classes_this_member_is_not_in = member_repository.gym_classes_this_member_is_not_in(id)
+
+    return render_template("members/show.html", member=member, gym_classes=gym_classes, gym_classes_this_member_is_not_in=gym_classes_this_member_is_not_in)
 
 @members_blueprint.route("/members/new")
 def new_member():
