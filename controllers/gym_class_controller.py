@@ -21,9 +21,38 @@ def show(id):
     gym_class = gym_class_repository.select(id)
 
     members_of_this_class = gym_class_repository.members(id)
-    all_members = member_repository.select_all()
+    # all_members_not_in_this_class = member_repository.select_all()
 
-    all_members_not_in_this_class = [x for x in all_members if x not in members_of_this_class]
+    all_members_not_in_this_class = gym_class_repository.members_not_in_class(gym_class.id)
+
+
+    print("")
+    print("members not in  this class - ")
+    for member in all_members_not_in_this_class:
+        print(member.first_name)
+
+    # all_members_not_in_this_class = [x for x in all_members if x not in members_of_this_class]
+
+
+    # for element in members_of_this_class:
+    #     print(element.first_name)
+    #     if element.id in all_members_not_in_this_class:
+    #         print("HERE")
+    #         all_members_not_in_this_class.remove(element)
+
+
+    # print(list_2)
+
+    # print("")
+    # print("members of this class - ")
+    # for member in members_of_this_class:
+    #     print(member.first_name)
+    
+    # print("")
+    # print("all_members - ")
+    # for member in all_members:
+    #     print(member.first_name)
+
     #  THIS LINE IS CURRENTLY NOT WORKING....
 
     # members_of_this_class_set = set(members_of_this_class) 

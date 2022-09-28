@@ -54,6 +54,19 @@ def members(gym_class_id):
         members.append(member)
     return members
 
+def members_not_in_class(gym_class_id):
+    members = []
+    
+    sql = "SELECT members.* FROM members WHERE id NOT IN (SELECT members.id FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE gym_class_id = %s )"
+    
+    values = [gym_class_id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        member = Member(row['first_name'], row['last_name'], row['membership'], row['active'], row['id'])
+        members.append(member)
+    return members
+
 def delete_all():
     sql = "DELETE FROM gym_classes"
     run_sql(sql)

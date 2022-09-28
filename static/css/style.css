@@ -1,5 +1,6 @@
 body{
     font-family: "Helvetica", arial, sans-serif; font-size: 16px;
+    /* background: rgb(221, 226, 229); */
 }
 
 
@@ -16,10 +17,21 @@ a {
 
 }
 
-a:hover {
-    background: rgba(120, 136, 186, 0.75);
+.small_link{
+    padding: 2px 1px;
+    width: 20%;
+    margin: 3px;
 }
 
+.medium_link{
+    padding:10px 15px;
+    width: 60%;
+    margin: 3px;
+}
+
+a:hover {
+    background: rgb(13, 149, 94);
+}
 
 .main {
     max-width: 1200px;
@@ -35,10 +47,18 @@ a:hover {
     display: flex;
 } */
 
+ul {
+    
+    list-style: none;  margin: 0;  padding: 0; 
+    
+}
+
+.show_members{
+    width: 150%
+}
 
 .navigation ul {  border: 1px solid rgb(4, 77, 28);  
     list-style: none;  margin: 0;  padding: 0;  display: flex; 
-
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 

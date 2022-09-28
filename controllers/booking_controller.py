@@ -44,13 +44,6 @@ def create_booking():
                     return redirect('/classes/'+gym_class_id)
             
 
-        # time_of_class 
-        # peak_time = 
-        # if we are Standard membership AND inside of peak times
-        #   send error message
-        # else
-        #   book them in
-
 # DELETE
 # DELETE (acutally GET) '/bookings/13/16/delete'
 @bookings_blueprint.route("/bookings/<gym_class_id>/<member_id>/delete", methods=['GET'])

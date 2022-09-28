@@ -5,16 +5,13 @@
 <div>
 {% for gym_class in gym_classes_calendar %}
 
-
-
-
     <p><a href='/classes/{{ gym_class.id }}'>
-        {{ gym_class.name  }} happening on  {{ gym_class.date_start.strftime('%d/%m/%Y') }} at  {{ gym_class.date_start.strftime("%H:%M") }}   
+        {{ gym_class.name  }}  <br>  {{ gym_class.date_start.strftime('%d/%m/%Y') }} <br>  {{ gym_class.date_start.strftime("%H:%M") }}   
     
     </a>
 
 </p>
-        <hr>
+<hr>
 {% endfor %}
 </div>
 {% endblock %}

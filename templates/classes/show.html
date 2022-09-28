@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div>
 <h1> Gym Class: {{gym_class.name}}</h1>
+
+</div>
 
 <div>
     <form action="/bookings" method="post">
@@ -27,20 +30,20 @@
 
 <div>
 <h3>Attending:</h3>
-<ul>
+<ul class="show_members">
     {% for member in members_of_this_class %}
         <li>
-            {{member.first_name}}  {{member.last_name}} 
-            Membership : {{ member.membership  }}
+            <a class="medium_link" href="/members/{{ member.id }}">{{member.first_name}}  {{member.last_name}} </a>
+            <!-- Membership : {{ member.membership  }}
             Status : {%  if member.active==True %}
                         Activated
                     {% else %}
                         Deactivated
-                    {%  endif %}
-member active variable = {{  member.active }}
-            <a href="/bookings/{{ gym_class.id}}/{{ member.id }}/delete">X</a>
+                    {%  endif %} -->
+<!-- member active variable = {{  member.active }} -->
+            <a class="small_link" href="/bookings/{{ gym_class.id}}/{{ member.id }}/delete">X</a>
 
-            <br>
+            <hr>
         </li>
     {% endfor %}
 

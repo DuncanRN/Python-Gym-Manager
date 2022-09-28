@@ -13,17 +13,17 @@
 
 <h3>Attending:</h3>
 
-<ul id="gym_class_list">
+<ul id="gym_class_list" >
     {% for gym_class in gym_classes %}
         <li id ="gym_class_list_element">
-            {{ gym_class.name }}
+            <a class="medium_link" href="/classes/{{ gym_class.id }}">{{ gym_class.name }}</a>
         </li>
     {% endfor %}
 
     
 
 </ul>
-
+<hr><hr>
 <a href="/members/{{ member.id }}/edit">Edit Member</a>
 
 
