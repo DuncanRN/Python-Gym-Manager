@@ -14,7 +14,15 @@
 
     <div>
         <label for="membership">Membership Level:</label>
-        <input type="text" id="membership" name="membership" value="{{member.membership}}" required>
+        <!-- <input type="text" id="membership" name="membership" value="{{member.membership}}" required> -->
+        <select name="membership" id="membership">
+            <option value="Standard" >Standard</option>
+            <option value="Premium"   {%  if member.membership=="Premium" %}
+                                        selected="selected"
+                                    {% endif %}
+            >Premium</option>
+        </select>
+
     </div>
 
 

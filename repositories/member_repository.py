@@ -10,8 +10,7 @@ from models.gym_class import GymClass
 def save(member):
     sql = "INSERT INTO members (first_name, last_name, membership, active) VALUES ( %s, %s, %s, %s ) RETURNING id"
     values = [member.first_name, member.last_name, member.membership, member.active]
-    print(sql)
-    print(values)
+    
     results = run_sql( sql, values )
     member.id = results[0]['id']
     return member
@@ -25,8 +24,7 @@ def update(member):
         active=False
 
     values = [member.first_name, member.last_name, member.membership, active,  member.id]
-    print(sql)
-    print(values)
+    
 
     run_sql(sql, values)
 
@@ -47,8 +45,7 @@ def select(id):
     sql = "SELECT * FROM members WHERE id = %s"
     values = [id]
 
-    print(sql)
-    print(values)
+    
 
     result = run_sql(sql, values)[0]
 
@@ -59,7 +56,7 @@ def select(id):
 def gym_classes(member_id):
     gym_classes = []
     sql = "SELECT gym_classes.* FROM gym_classes INNER JOIN bookings ON bookings.gym_class_id = gym_classes.id WHERE member_id = %s"
-    # THIS WORKS Leave it!
+    
     
     
     values = [member_id]

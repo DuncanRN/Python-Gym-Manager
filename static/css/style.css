@@ -5,12 +5,6 @@ body{
 .flex-grid {
     display: flex;
 }
-/* .col {
-    flex: 2 1 auto;
-    border : 230px;
-    
-}  */
-
 
 
 .flex-grid {
@@ -19,7 +13,6 @@ body{
 }
 
 .flex-grid-child-1 {
-    /* width: 150px; */
     justify: left;
 }
 
@@ -33,13 +26,9 @@ body{
 }
 
 .flex-grid-child-3 {
-    /* width: 150px; */
     justify: right;
 }
 
-/* .flex-grid > * {
-    flex: 0 0 auto;
-} */
 
 
 hr {
@@ -85,13 +74,6 @@ a:hover {
     padding: 0 3em 1.5em;
 }
 
-/* .navigation ul {
-    border: 1px solid rgb(2, 24, 95);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-} */
 
 ul {
     list-style: none;  margin: 0;  padding: 0; 
@@ -159,8 +141,6 @@ input, select, button {
 }
 
 #gym_class_list{
-    
-    /* border: 3px dotted rgb(178, 190, 228); */
     justify: center;
 }
 

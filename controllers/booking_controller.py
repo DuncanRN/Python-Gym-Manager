@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import request, redirect
 from flask import Blueprint
 from models.booking import Booking
 import repositories.booking_repository as booking_repository
@@ -30,20 +30,7 @@ def create_booking():
     daytime_of_class = this_gym_class.date_start
     hour_of_class = daytime_of_class.hour
 
-    print("about to add in a booking")
-
-
-    print(member_id)
-    print("That was member_id")
-    print(gym_class_id)
-    print("That was gym_class_id")
-
-
-    print(len(members_in_class))
-    print("That was len members in class")
-    print(this_gym_class.capacity)
-    print("That was this gym class capacity")
-    print(" ")
+    
 
     if len(members_in_class) == this_gym_class.capacity:
         return redirect('classes/error_message/0') # error message 0 will be a class at capacity error

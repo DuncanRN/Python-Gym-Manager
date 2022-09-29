@@ -11,7 +11,6 @@ def save(gym_class):
     return gym_class
 
 def update(gym_class):
-    # pdb.set_trace()
     sql = "UPDATE gym_classes SET name = %s, date_start = %s, repeating = %s, end_date = %s, capacity = %s, status = %s WHERE id = %s"
     values = [gym_class.name, gym_class.date_start, gym_class.repeating, gym_class.end_date, gym_class.capacity, gym_class.status,  gym_class.id]
     run_sql(sql, values)

@@ -53,9 +53,6 @@ def update_member(id):
     membership = request.form['membership']
     active = request.form['active']
     
-    # print("in update member")
-    # print(active)
-    # print("that was the active variable")
 
     member_to_update = Member(first_name, last_name, membership, active, id)
     member_repository.update(member_to_update)

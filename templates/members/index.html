@@ -7,7 +7,7 @@
     
     {% for member in members %}
     <a href="/members/{{ member.id }}" class="medium_link"> {{member.first_name}} {{member.last_name}} 
-        <hr>
+    
             <!-- membership : {{member.membership}}
 <br>
 
@@ -19,6 +19,6 @@
         </a>
     
     {% endfor %}
-
+<br><br>
 </div>
 {% endblock %}
