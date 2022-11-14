@@ -10,15 +10,13 @@ We were given a range of 5 briefs to follow. I chose the one with the many-to-ma
 
 #  1 Running instructions 
 
-# # psql -d gym_manager -f db/gym_manager.sql
+psql -d gym_manager -f db/gym_manager.sql
 
-# # python3 console
+python3 console
 
-# # flask run
+flask run
 
 Then go to  http://127.0.0.1:5000/
-Although look at the terminal after you run “flask run” that “5000” there might be different.
-
 
 # 2 Brief
 
