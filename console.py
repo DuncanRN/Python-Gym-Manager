@@ -17,16 +17,13 @@ member_repository.save(member_1)
 member_2 = Member("Tony" , "Soprano", "Premium", True)
 member_repository.save(member_2)
 
-member_3 = Member("Michael", "Corleone", "Standard", True)
+member_3 = Member("Michael", "Corleone", "Premium", True)
 member_repository.save(member_3)
 
-member_4 = Member("Vito", "Corleone", "Premium", True)
-member_repository.save(member_4)
-
-member_5 = Member("Jimmy", "Hoffa", "Standard", True)
+member_5 = Member("Jimmy", "Hoffa", "Premium", True)
 member_repository.save(member_5)
 
-member_6 = Member("Frank", "Sheeran", "Standard", False)
+member_6 = Member("Frank", "Sheeran", "Premium", True)
 member_repository.save(member_6)
 
 member_7 = Member("Karen", "Hill", "Standard", True)
@@ -35,16 +32,23 @@ member_repository.save(member_7)
 member_8 = Member("Kay", "Adams-Corleone", "Standard", True)
 member_repository.save(member_8)
 
-gym_class_1 = GymClass("Swimming (with the fishes) for Beginners", "2023-01-01 14:30:00", 'Monthly', "2023-06-01 00:00:01", 5, "Active")
+member_4 = Member("Vito", "Corleone", "Premium", False)
+member_repository.save(member_4)
+
+
+gym_class_6 = GymClass("Concrete Boots Weight Training ",  "2022-12-21 18:30:00", 'None', "1970-01-01 00:00:01", 2, "Active")
+gym_class_repository.save(gym_class_6)
+
+gym_class_1 = GymClass("Swimming (with the fishes) for Beginners", "2023-01-01 14:30:00", 'Monthly', "2023-06-01 00:00:01", 3, "Active")
 gym_class_repository.save(gym_class_1)
 gym_class_2 = GymClass("Shakedowns and Protein Shakes", "2022-11-01 09:30:00", 'None', "1970-01-01 00:00:01", 2, "Active")
 gym_class_repository.save(gym_class_2)
 gym_class_3 = GymClass("Strength and Conditioning",  "2022-06-01 12:15:00", 'None', "1970-01-01 00:00:01", 3, "Deactivated")
 gym_class_repository.save(gym_class_3)
-gym_class_3 = GymClass("Take your shot",  "2022-06-02 14:45:00", 'None', "1970-01-01 00:00:01", 3, "Active")
-gym_class_repository.save(gym_class_3)
-gym_class_3 = GymClass("Pistol Whiping ",  "2022-11-21 18:30:00", 'None', "1970-01-01 00:00:01", 5, "Active")
-gym_class_repository.save(gym_class_3)
+gym_class_4 = GymClass("Take your shot",  "2022-06-02 14:45:00", 'None', "1970-01-01 00:00:01", 3, "Active")
+gym_class_repository.save(gym_class_4)
+gym_class_5 = GymClass("Pistol Whiping ",  "2022-11-21 18:30:00", 'None', "1970-01-01 00:00:01", 5, "Active")
+gym_class_repository.save(gym_class_5)
 
 booking_1 = Booking(member_1.id, gym_class_1.id)
 booking_repository.save(booking_1)
@@ -56,4 +60,3 @@ booking_4 = Booking(member_2.id, gym_class_1.id)
 booking_repository.save(booking_4)
 booking_5 = Booking(member_3.id, gym_class_1.id)
 booking_repository.save(booking_5)
- 

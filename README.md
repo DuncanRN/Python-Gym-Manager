@@ -1,3 +1,6 @@
+![Gym Manager FrontPage](https://github.com/DuncanRN/Javascript-PokeDex/blob/main/src/img_screenshots/Poke2.jpg?raw=true)
+
+
 1 Running instructions 
 
 psql -d gym_manager -f db/gym_manager.sql
